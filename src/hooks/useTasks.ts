@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 
 export const useTasks = () => {
   const [isMounted, setIsMounted] = useState(false);
-  const { tasks, filter, setTasks, setFilter } = useTaskStore();
+  const { tasks, filter, setTasks, setFilter, updateTask: updateStoreTask } = useTaskStore();
   const { toast } = useToast();
 
   const { data: apiTasks, isLoading } = useQuery({
@@ -25,9 +25,8 @@ export const useTasks = () => {
 
   const updateMutation = useMutation({
     mutationFn: updateTask,
-    onSuccess: (updatedTask) => {
-      setTasks(tasks.map(t => t.id === updatedTask.id ? updatedTask : t));
-      toast({ title: 'Task updated successfully' });
+    onMutate: (updatedTask) => {
+      updateStoreTask(updatedTask);
     },
   });
 
