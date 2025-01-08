@@ -1,4 +1,5 @@
 import { Task } from '@/lib/types';
+import { AnimatePresence, motion } from 'framer-motion';
 import { TaskItem } from './task-item';
 
 type TaskListProps = {
@@ -7,19 +8,30 @@ type TaskListProps = {
   onDelete: (taskId: number) => void;
 };
 
-export function TaskList ({ tasks, onUpdate, onDelete }: TaskListProps) {
+export function TaskList({ tasks, onUpdate, onDelete }: TaskListProps) {
   return tasks.length > 0 ? (
-    <div className="space-y-2">
-      {tasks.map((task) => (
-        <TaskItem
-          key={task.id}
-          task={task}
-          onUpdate={onUpdate}
-          onDelete={onDelete}
-        />
-      ))}
-    </div>
+    <motion.div 
+      className="space-y-2"
+      layout
+    >
+      <AnimatePresence mode="popLayout">
+        {tasks.map((task) => (
+          <TaskItem
+            key={task.id}
+            task={task}
+            onUpdate={onUpdate}
+            onDelete={onDelete}
+          />
+        ))}
+      </AnimatePresence>
+    </motion.div>
   ) : (
-    <p className="text-muted-foreground text-center">No tasks found.</p>
+    <motion.p 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="text-muted-foreground text-center"
+    >
+      No tasks found.
+    </motion.p>
   );
-};
+}
