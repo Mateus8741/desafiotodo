@@ -2,6 +2,7 @@
 
 import { Toaster } from '@/components/ui/toaster';
 import { useTaskStore } from '@/lib/store';
+import { ClerkProvider } from '@clerk/nextjs';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { useEffect, useState } from 'react';
@@ -29,10 +30,12 @@ export function Providers({ children }: { children: React.ReactNode }) {
   }, [theme]);
 
   return (
-    <QueryClientProvider client={queryClient}>
-      {children}
-      <Toaster />
-      <ReactQueryDevtools />
-    </QueryClientProvider>
+    <ClerkProvider>
+      <QueryClientProvider client={queryClient}>
+        {children}
+        <Toaster />
+        <ReactQueryDevtools />
+      </QueryClientProvider>
+    </ClerkProvider>
   );
 } 
