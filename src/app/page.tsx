@@ -1,7 +1,6 @@
 'use client';
 
 import { Header } from '@/components/header';
-import { TaskDialog } from '@/components/task-dialog';
 import { TaskFilters } from '@/components/task-filters';
 import { TaskList } from '@/components/task-list';
 import { Card } from '@/components/ui/card';
@@ -26,10 +25,18 @@ export default function Home() {
   if (!isLoaded || !isMounted) return null;
   if (isLoading) return <div>Loading...</div>;
 
+  function handleAddTask(title: string) {
+    createMutation.mutate({
+      title,
+      completed: false,
+      userId: Number(user?.id),
+    });
+  }
+
   return (
     <div className="container mx-auto p-4">
       <Card className="p-6">
-        <Header />
+        <Header onAddTask={handleAddTask} />
         
         {isSignedIn ? (
           <>
@@ -47,18 +54,6 @@ export default function Home() {
               onUpdate={(task) => updateMutation.mutate(task)}
               onDelete={(id) => deleteMutation.mutate(id)}
             />
-
-            <div className="mt-4">
-              <TaskDialog
-                onSave={(title) =>
-                  createMutation.mutate({
-                    title,
-                    completed: false,
-                    userId: Number(user?.id),
-                  })
-                }
-              />
-            </div>
           </>
         ) : (
           <div className="text-center py-10">
