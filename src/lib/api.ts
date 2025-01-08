@@ -13,10 +13,16 @@ export const fetchTasks = async (): Promise<Task[]> => {
   }));
 };
 
+// Função auxiliar para gerar ID único
+const generateUniqueId = (): number => {
+  return Date.now() + Math.floor(Math.random() * 1000);
+};
+
 export const createTask = async (task: Partial<Task>): Promise<Task> => {
   const { data } = await api.post('/todos', task);
   return {
     ...data,
+    id: generateUniqueId(), // Usando ID único
     createdAt: new Date().toISOString()
   };
 };

@@ -1,14 +1,14 @@
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button";
 import {
-    Dialog,
-    DialogContent,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-} from '@/components/ui/dialog';
-import { Input } from '@/components/ui/input';
-import { Task } from '@/lib/types';
-import { useState } from 'react';
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Task } from "@/lib/types";
+import { useState } from "react";
 
 interface TaskDialogProps {
   task?: Task;
@@ -17,12 +17,12 @@ interface TaskDialogProps {
 
 export function TaskDialog({ task, onSave }: TaskDialogProps) {
   const [open, setOpen] = useState(false);
-  const [title, setTitle] = useState(task?.title || '');
+  const [title, setTitle] = useState(task?.title || "");
 
   const handleSave = () => {
     onSave(title);
     setOpen(false);
-    setTitle('');
+    setTitle("");
   };
 
   return (
@@ -49,4 +49,4 @@ export function TaskDialog({ task, onSave }: TaskDialogProps) {
       </DialogContent>
     </Dialog>
   );
-} 
+}
