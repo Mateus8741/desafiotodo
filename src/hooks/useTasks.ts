@@ -12,7 +12,7 @@ export const useTasks = () => {
   const { data: apiTasks, isLoading } = useQuery({
     queryKey: ['tasks'],
     queryFn: fetchTasks,
-    enabled: isMounted,
+    enabled: isMounted && tasks.length === 0,
   });
 
   const createMutation = useMutation({
@@ -44,8 +44,10 @@ export const useTasks = () => {
   }, []);
 
   useEffect(() => {
-    if (apiTasks) setTasks(apiTasks);
-  }, [apiTasks, setTasks]);
+    if (apiTasks && tasks.length === 0) {
+      setTasks(apiTasks);
+    }
+  }, [apiTasks, setTasks, tasks.length]);
 
   const filteredTasks = tasks.filter((task) => {
     if (filter === 'completed') return task.completed;

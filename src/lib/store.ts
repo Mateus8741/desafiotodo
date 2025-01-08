@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { createJSONStorage, persist } from 'zustand/middleware';
 import { Task, TaskFilter } from './types';
 
 interface TaskStore {
@@ -36,7 +36,8 @@ export const useTaskStore = create<TaskStore>()(
     }),
     {
       name: 'task-store',
-      skipHydration: true,
+      storage: createJSONStorage(() => localStorage),
+      partialize: (state) => ({ tasks: state.tasks, theme: state.theme }),
     }
   )
 ); 
