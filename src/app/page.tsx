@@ -1,9 +1,9 @@
 'use client';
 
+import { ChangeTheme } from '@/components/change-theme';
 import { TaskDialog } from '@/components/task-dialog';
 import { TaskFilters } from '@/components/task-filters';
 import { TaskList } from '@/components/task-list';
-import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { useTasks } from '@/hooks/useTasks';
@@ -30,7 +30,8 @@ export default function Home() {
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-2xl font-bold">Task Dashboard</h1>
           <div className="flex gap-2">
-            <Button variant="outline">Toggle Theme</Button>
+          <ChangeTheme />
+
             <TaskDialog
               onSave={(title) =>
                 createMutation.mutate({
