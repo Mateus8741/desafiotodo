@@ -10,7 +10,8 @@ export async function fetchTasks(): Promise<Task[]> {
   const { data } = await api.get('/todos');
   return data.slice(0, 10).map((task: Task) => ({
     ...task,
-    createdAt: new Date().toISOString()
+    createdAt: new Date().toISOString(),
+    isManual: false
   }));
 };
 
@@ -20,7 +21,8 @@ export async function createTask(task: Partial<Task>): Promise<Task> {
   return {
     ...data,
     id: generateUniqueId(),
-    createdAt: new Date().toISOString()
+    createdAt: new Date().toISOString(),
+    isManual: true
   };
 };
 

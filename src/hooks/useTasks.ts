@@ -1,6 +1,7 @@
 import { useToast } from '@/hooks/use-toast';
 import { createTask, deleteTask, fetchTasks, updateTask } from '@/lib/api';
 import { useTaskStore } from '@/lib/store';
+import { Task } from '@/lib/types';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
 
@@ -18,15 +19,29 @@ export const useTasks = () => {
   const createMutation = useMutation({
     mutationFn: createTask,
     onSuccess: (newTask) => {
-      setTasks([...tasks, newTask]);
+      setTasks([...tasks, { ...newTask, isManual: true }]);
       toast({ title: 'Task created successfully' });
     },
   });
 
   const updateMutation = useMutation({
-    mutationFn: updateTask,
+    mutationFn: async (task: Task) => {
+      if (task.isManual) {
+        return task;
+      }
+      return updateTask(task);
+    },
     onMutate: (updatedTask) => {
       updateStoreTask(updatedTask);
+    },
+    onError: () => {
+      toast({ 
+        title: 'Failed to update task',
+        variant: "destructive"
+      });
+    },
+    onSuccess: () => {
+      toast({ title: 'Task updated successfully' });
     },
   });
 

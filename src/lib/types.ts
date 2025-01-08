@@ -4,6 +4,7 @@ export interface Task {
   completed: boolean;
   userId: number;
   createdAt: string;
+  isManual?: boolean;
 }
 
 export type TaskFilter = 'all' | 'pending' | 'completed';
