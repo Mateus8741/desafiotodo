@@ -9,13 +9,17 @@ type TaskListProps = {
 };
 
 export function TaskList({ tasks, onUpdate, onDelete }: TaskListProps) {
-  return tasks.length > 0 ? (
+  const sortedTasks = [...tasks].sort((a, b) => 
+    new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  );
+
+  return sortedTasks.length > 0 ? (
     <motion.div 
       className="space-y-2"
       layout
     >
       <AnimatePresence mode="popLayout">
-        {tasks.map((task) => (
+        {sortedTasks.map((task) => (
           <TaskItem
             key={task.id}
             task={task}
