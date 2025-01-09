@@ -34,13 +34,13 @@ export default function Home() {
   }
 
   return (
-    <div className="container mx-auto p-4">
-      <Card className="p-6">
+    <div className="container mx-auto p-4 max-w-3xl">
+      <Card className="p-4 md:p-6">
         <Header onAddTask={handleAddTask} />
         
         {isSignedIn ? (
           <>
-            <div className="mb-6">
+            <div className="mb-4 md:mb-6">
               <Progress value={completedPercentage} className="h-2" />
               <p className="text-sm text-muted-foreground mt-2">
                 {Math.round(completedPercentage)}% tasks completed
@@ -56,9 +56,11 @@ export default function Home() {
             />
           </>
         ) : (
-          <div className="text-center py-10">
-            <h2 className="text-xl mb-2">Welcome to Task Dashboard</h2>
-            <p className="text-muted-foreground">Please sign in to manage your tasks</p>
+          <div className="text-center py-8 md:py-10">
+            <h2 className="text-lg md:text-xl mb-2">Welcome to Task Dashboard</h2>
+            <p className="text-sm md:text-base text-muted-foreground">
+              Please sign in to manage your tasks
+            </p>
           </div>
         )}
       </Card>
