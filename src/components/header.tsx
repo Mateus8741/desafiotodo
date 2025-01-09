@@ -11,8 +11,8 @@ export function Header({ onAddTask }: HeaderProps) {
   const { isSignedIn } = useUser();
 
   return (
-    <header className="flex justify-between items-center mb-6">
-      <h1 className="text-2xl font-bold">Task Dashboard</h1>
+    <header className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-4 md:mb-6">
+      <h1 className="text-xl md:text-2xl font-bold">Task Dashboard</h1>
       <div className="flex gap-2 items-center">
         {isSignedIn && onAddTask && (
           <TaskDialog
