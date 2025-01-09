@@ -28,10 +28,10 @@ Uma aplicação moderna de gerenciamento de tarefas construída com Next.js, com
 1. Clone o repositório:
 
 ```bash
-git clone https://github.com/seunome/painel-tarefas.git
+git clone https://github.com/Mateus8741/desafiotodo.git
 ```
 
-2. Crie um arquivo `.env.local` na raiz do projeto e adicione suas chaves do Clerk:
+2. Crie um arquivo `.env.local` na raiz do projeto e adicione as chaves que criel no arquivo `.env.example`:
 
 ```env
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=sua_chave_publica

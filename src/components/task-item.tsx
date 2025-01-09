@@ -1,8 +1,8 @@
-import { TaskDialog } from '@/components/task-dialog';
-import { Button } from '@/components/ui/button';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Task } from '@/lib/types';
-import { motion } from 'framer-motion';
+import { TaskDialog } from "@/components/task-dialog";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Task } from "@/lib/types";
+import { motion } from "framer-motion";
 
 type TaskItemProps = {
   task: Task;
@@ -31,7 +31,7 @@ export function TaskItem({ task, onUpdate, onDelete }: TaskItemProps) {
           animate={{
             scale: task.completed ? 0.95 : 1,
             opacity: task.completed ? 0.5 : 1,
-            textDecoration: task.completed ? 'line-through' : 'none',
+            textDecoration: task.completed ? "line-through" : "none",
           }}
           transition={{ duration: 0.2 }}
           className="text-sm md:text-base break-all"
@@ -44,8 +44,8 @@ export function TaskItem({ task, onUpdate, onDelete }: TaskItemProps) {
           task={task}
           onSave={(title) => onUpdate({ ...task, title })}
         />
-        <Button 
-          variant="destructive" 
+        <Button
+          variant="destructive"
           onClick={() => onDelete(task.id)}
           className="transition-all hover:scale-105 text-sm"
           size="sm"
