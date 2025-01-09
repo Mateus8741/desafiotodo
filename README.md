@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Desafio Dashboard de Tarefas INC
 
-## Getting Started
+Uma aplicação moderna de gerenciamento de tarefas construída com Next.js, com atualizações em tempo real, autenticação e design responsivo.
 
-First, run the development server:
+## 🚀 Funcionalidades
+
+- ✨ Interface moderna e responsiva
+- 🔐 Autenticação com Clerk
+- 🌓 Suporte a tema claro/escuro
+- ⚡ Atualizações em tempo real
+- 📱 Design mobile-first
+- 🔄 Sistema de filtro de tarefas
+- 🎯 Acompanhamento de progresso
+
+## 🛠 Tecnologias Utilizadas
+
+- [Next.js 15](https://nextjs.org/) - Framework React
+- [Clerk](https://clerk.com/) - Autenticação
+- [TanStack Query](https://tanstack.com/query) - Busca de Dados
+- [Zustand](https://zustand-demo.pmnd.rs/) - Gerenciamento de Estado
+- [Tailwind CSS](https://tailwindcss.com/) - Estilização
+- [Framer Motion](https://www.framer.com/motion/) - Animações
+- [Radix UI](https://www.radix-ui.com/) - Componentes de UI
+- [TypeScript](https://www.typescriptlang.org/) - Segurança de Tipos
+
+## 🚦 Começando
+
+1. Clone o repositório:
+
+```bash
+git clone https://github.com/seunome/painel-tarefas.git
+```
+
+2. Crie um arquivo `.env.local` na raiz do projeto e adicione suas chaves do Clerk:
+
+```env
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=sua_chave_publica
+CLERK_SECRET_KEY=sua_chave_secreta
+```
+
+3. Execute o servidor de desenvolvimento:
 
 ```bash
 npm run dev
-# or
+# ou
 yarn dev
-# or
+# ou
 pnpm dev
-# or
+# ou
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Abra [http://localhost:3000](http://localhost:3000) no seu navegador.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📱 Design Responsivo
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+A aplicação é totalmente responsiva e otimizada para:
+- Dispositivos móveis (< 640px)
+- Tablets (640px - 768px)
+- Notebooks (768px - 1024px)
+- Desktops (> 1024px)
 
-## Learn More
+## 🔑 Autenticação
 
-To learn more about Next.js, take a look at the following resources:
+A autenticação é gerenciada pelo Clerk, oferecendo:
+- Login/Cadastro seguro
+- Gerenciamento de tokens JWT
+- Rotas protegidas
+- Gerenciamento de perfil de usuário
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🔑 Contas para teste
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. user: test
+- email: teste@t.com
+- senha: teste123@
 
-## Deploy on Vercel
+2. user: teste2
+- email: Auth sem email
+- senha: teste123@
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🎨 Suporte a Temas
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+A aplicação suporta temas claro e escuro:
+- Alternância manual de tema
+- Seleção persistente de tema
+
